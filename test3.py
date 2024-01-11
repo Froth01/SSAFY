@@ -1,20 +1,12 @@
 def right(x,y):
-    right_source = []
+    source = []
     for m in range(M):
-        if y+m > N-1 :
+        if y+m > N-1 or y-m < 0 :
             pass
         else:
-            right_source.append(fly_list[x][y+m])
-    result = sum(right_source)-fly_list[x][y]        
-    return result
-def left(x,y):
-    left_source = []
-    for m in range(M):
-        if y-m < 0 :
-            pass
-        else:
-            left_source.append(fly_list[x][y-m])
-    result = sum(left_source)-fly_list[x][y]        
+            source.append(fly_list[x][y+m])
+            source.append(fly_list[x][y-m])
+    result = sum(source)-fly_list[x][y]        
     return result
 def up(x,y):
     up_source=[]
@@ -71,7 +63,7 @@ def left_down(x,y):
     result = sum(source)-fly_list[x][y]
     return result  
 def cross_kill(x,y):
-    result = up(x,y)+down(x,y)+left(x,y)+right(x,y)+fly_list[x][y]
+    result = up(x,y)+down(x,y)+right(x,y)+fly_list[x][y]
     return result
 def x_kill(x,y):
     result = right_down(x,y)+right_up(x,y)+left_down(x,y)+left_up(x,y)+fly_list[x][y]
