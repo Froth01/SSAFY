@@ -76,7 +76,6 @@ def cross_kill(x,y):
 def x_kill(x,y):
     result = right_down(x,y)+right_up(x,y)+left_down(x,y)+left_up(x,y)+fly_list[x][y]
     return result
-
 if __name__ == "__main__":
     test_case = int(input())
     fly_list = []
