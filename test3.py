@@ -85,6 +85,7 @@ if __name__ == "__main__":
         for n in range(N):
             fly_list.append(list(map(int,input().split())))
         for x in range(N):
+            
             for y in range(N):
                  sum_list.append(cross_kill(x,y))
                  sum_list.append(x_kill(x,y))
