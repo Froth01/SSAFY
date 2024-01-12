@@ -1,6 +1,7 @@
 T = int(input())
 
-for t in range(1,T):
+for t in range(T):
+    test_num = int(input())
     score = list(map(int,input().split()))
     repeat_list = []
     score.sort()
@@ -8,4 +9,4 @@ for t in range(1,T):
     for x in range(len(score)):
         repeat_list.append(score.count(score[x]))
     result = score[repeat_list.index(max(repeat_list))]
-    print(f'#{t} {result}')
+    print(f'#{test_num} {result}')
