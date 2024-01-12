@@ -1,10 +1,7 @@
-a = [1,9,4,8,8,9,2,9,8,7,9,8]
-b = []
-a.sort()
-a.reverse()
-for x in range(len(a)):
-    b.append(a.count(a[x]))
-print(a[b.index(max(b))])
+result = True
+
+
+print(int(result==True))
 
 # for x in range(len(a)):
 #     if ValueError :
