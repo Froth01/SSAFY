@@ -1,7 +1,13 @@
-# 아래에 코드를 작성하시오.
-korean = '한글'
-english = 'english'
-number = 3
+print(3 * 2)
+print(3 ** 2)
+print((3 ** 2)//(3 * 2), (3 ** 2) % (3 * 2))
+print((3 ** 2) + ((-3) ** 2))
 
-print(f'{korean}과 {english}')
-print(korean*number)
+times = 3 * 2
+square = 3 ** 2
+minus_square = (-3) ** 2
+
+print(times)
+print(square)
+print(f'{square // times} {square % times}')
+print(f'{square + minus_square}')
