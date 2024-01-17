@@ -11,7 +11,7 @@ age = [20, 16, 52, 36, 60]
 address = ['서울', '강릉', '조선', '나주', '한성부']
 
 
-something = list(map(create_user,(name,age,address)))
+something = list(map(create_user,name,age,address))
 
 result = list(map(create_user,name,age,address))
 print(something)

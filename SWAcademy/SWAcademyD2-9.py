@@ -15,18 +15,16 @@ for t in range(T):
         total_line = (total_len//10)+1
     else :
         total_line = total_len//10
-    
+    print(f'#{t+1}')
     for line in range(total_line):
-        
-        if len(Ci[line]*int(Ki[line]))<rest:
-            rest=abs(rest-len(Ci[line]*int(Ki[line])))
-            print(Ci[line]*int(Ki[line]),end='')
-        elif len(Ci[line]*int(Ki[line]))==10:
-            print(Ci[line]*int(Ki[line]))
-        else:
-            rest=abs(rest-len(Ci[line]*(int(Ki[line])-10)))
-            print(Ci[line]*10)
-            print(Ci[line]*(int(Ki[line])-10),end='')
-            
-            
+        if len(Ci[line]*Ki[line])>rest:
+            print(Ci[line]*rest)
+            print(Ci[line]*(Ki[line]-rest))
+            rest =10-(Ki[line]-rest)%10
+        elif len(Ci[line]*Ki[line])==rest:
+            print(Ci[line]*Ki[line])
+        elif len(Ci[line]*Ki[line])<rest:
+            rest-=len(Ci[line]*Ki[line])
+            print(Ci[line]*Ki[line],end='')
+    print('\n')    
             
