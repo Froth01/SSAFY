@@ -10,3 +10,5 @@ for t in range(T):
         repeat_list.append(score.count(score[x]))
     result = score[repeat_list.index(max(repeat_list))]
     print(f'#{test_num} {result}')
+
+#1204.최빈수 구하기

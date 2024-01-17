@@ -41,3 +41,4 @@ if __name__ == "__main__":
                 if result==0 :
                     break
         print(f'#{t+1} {result}')
+#파리퇴치3
