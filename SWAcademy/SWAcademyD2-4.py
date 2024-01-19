@@ -1,3 +1,5 @@
+#1204. 사전학습 최빈수 구하기
+
 T = int(input())
 
 for t in range(T):
@@ -11,4 +13,3 @@ for t in range(T):
     result = score[repeat_list.index(max(repeat_list))]
     print(f'#{test_num} {result}')
 
-#1204.최빈수 구하기

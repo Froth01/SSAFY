@@ -1,3 +1,5 @@
+#1974. 사전학습 스도쿠 검증
+
 def check_right(a,b,result):
     x_line = sudoku[a]
     for i in range(9):

@@ -1,3 +1,5 @@
+#1285.아름이의 돌 던지기 파이썬은 제출못함
+
 T = int(input())
 for t in range(T):
     N = int(input())
@@ -10,7 +12,4 @@ for t in range(T):
             tie.append(throw[a])
     first = min(throw)
     print(f'#{t+1} {first} {len(tie)}')
-
-
-#1285.아름이의 돌 던지기 파이썬은 제출못함
     

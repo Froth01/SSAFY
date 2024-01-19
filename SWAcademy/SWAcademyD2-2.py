@@ -1,3 +1,5 @@
+#1961. 숫자 배열 회전
+
 def turn90(a):
     group1 = []
     for x in range(N):

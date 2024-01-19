@@ -1,4 +1,5 @@
 #1945. 간단한 소인수분해
+
 T=int(input())
 
 for t in range(T):

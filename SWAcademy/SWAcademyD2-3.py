@@ -1,3 +1,5 @@
+#사전학습 파리퇴치3
+
 def right(x,y):    
     return sum(fly_list[x][y+m] for m in range(M) if y+m <= N-1)
 def left(x,y):     
