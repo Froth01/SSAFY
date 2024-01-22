@@ -1,13 +1,7 @@
-print(3 * 2)
-print(3 ** 2)
-print((3 ** 2)//(3 * 2), (3 ** 2) % (3 * 2))
-print((3 ** 2) + ((-3) ** 2))
-
-times = 3 * 2
-square = 3 ** 2
-minus_square = (-3) ** 2
-
-print(times)
-print(square)
-print(f'{square // times} {square % times}')
-print(f'{square + minus_square}')
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+odd = []
+for i in range(len(my_list)):
+        if my_list[i]%2!=0:
+            odd.append(my_list.pop(i))
+            
+print(my_list)
