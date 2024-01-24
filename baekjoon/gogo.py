@@ -1,16 +1,7 @@
-words = []
-length = []
-for n in range(5):
-    word = str(input())
-    words.append(word)
-    length.append(len(words[n]))
-for w in range(len(words)):
-    if len(words[w])<max(length):
-        words[w]+='+'*(max(length)-len(words[w]))
-for m in range(max(length)):
-    for n in range(5):
-        if words[n][m]=='+':
-            pass
-        else:
-            print(words[n][m],end='')
-
+N = int(input())
+n=1
+m=0
+while not 6*(n+m-1)+1<=N<6*(n+m)+1:
+    m+=n
+    n+=1       
+print(n+1)
