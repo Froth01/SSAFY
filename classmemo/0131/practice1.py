@@ -1,23 +1,21 @@
-'''
-5
-45 15 10 56 23
-96 98 99 40 69
-96 84 49 46 34
-16 64 81 4 11
-10 66 85 55 14
-'''
-'''
-arr = []
-N = int(input())
-for n in range(N):
-    arr.append(list(map(int,input().split())))
-'''
-N = int(input())
-arr = [list(map(int,input().split())) for n in range(N)]
-for i in range(len(arr)):
-    for j in range(len(arr)):
-        if i-1<0 or i+1>N-1 or j-1<0 or j+1>N-1:
-            pass
-        else:
-            abs(arr[i][j]-arr[i+1]
+T=int(input())
+for t in range(T):
+    N = int(input())
+    sum_num = 0
+    frame = []
+    for n in range(N):
+        frame.append(list(map(int,input().split())))
+    di = [0,1,0,-1]
+    dj = [1,0,-1,0]
+    for i in range(N):
+        for j in range(N):
+            for k in range(4):
+                ki = i+di[k]
+                kj = j+dj[k]
+                if ki>4 or kj>4 or ki<0 or kj<0 :
+                    continue
+                sum_num+=abs(frame[i][j]-frame[ki][kj])
+    print(f'#{t+1} {sum_num}')
+
+
 
