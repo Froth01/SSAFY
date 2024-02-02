@@ -1,3 +1,5 @@
+from itertools import combinations
+
 def prime_search(limit):
     primes = [True]*(limit+1)
     primes[0]=primes[1]=False
@@ -11,16 +13,12 @@ def prime_search(limit):
 N = int(input())
 primes = prime_search(2000)
 num = list(map(int,input().split()))
-for i in range(1 << len(num)):
-    sum_num = 0
-    count= 0
-    for j in range(len(num)):
-        if i & (1 << j):
-            sum_num += num[j]
-            count += 1
-            if count==3:
-                print(j,end='')
-        print(',')
-    # if sum_num in primes and count == 2:
+num_lst=list(combinations(num,2))
+for n in num_lst:
+    if n[0]+n[1] not in primes:
+        num_lst.remove(n)
+
+print(num_lst)
+
 
 
