@@ -1,14 +1,16 @@
-height = []
-for n in range(9):
-    height.append(int(input()))
-def find(source):
-    for i in range(len(source)):
-        for j in range(1,len(source)):
-            if sum(source)-(source[i]+source[j])==100:
-                source.pop(i)
-                source.pop(j-1)
-                return source
-find(height)
-height.sort()
-for h in height:
-    print(h)
+def cycle(arr):
+    global count
+    sum_num = arr[0] + arr[1]
+    new = arr[1] * 10 + sum_num
+    if arr!=list(map(int,str(new))):
+        count += 1
+        return cycle(list(new))
+    else:
+        return arr
+
+
+
+data = int(input())
+count = 1
+cycle(data)
+print(count)
