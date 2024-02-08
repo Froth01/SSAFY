@@ -1,17 +1,12 @@
-num = list(map(int,input().split()))
-num.sort()
-yack = []
-A,B = num
-while True:
-    for p in range(A,-1,-1):
-        if A%p==0 and B%p==0:
-            yack.append(p)
-            A//=p
-            B//=p
-    if 
-    for y in yack:
-        G *= y
-    L = G * A * B
-    break
-print(G)
-print(L)
+def GCD(x,y):
+    while(y):
+        x,y=y,x%y
+    return x
+
+def LCM(x,y):
+    return (x*y)//GCD(x,y)
+
+
+N,M = map(int,input().split())
+print(GCD(N,M))
+print(LCM(N,M))
