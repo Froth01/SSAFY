@@ -1,13 +1,30 @@
+import sys
+from collections import deque
+input = sys.stdin.readline
+
 N = int(input())
-count=[0]*201
-member = [input().split() for _ in range(N)]
-for n in member:
-    count[int(n[0])]=n
+members=deque()
+count = [0]*201
+for n in range(N):
+    member=input().split()
+    if len(members)==0:
+        members.append(member)
+        count[int(member[0])]+=1
+    elif int(member[0])<int(members[-1][0]):
+        seat = sum(count[:int(member[0])+1])
+        members.insert(seat,member)
+        count[int(member[0])] += 1
+    else:
+        members.append(member)
+        count[int(member[0])]+=1
+for p in range(N):
+    result = members.popleft()
+    print(*result)
 
 
-s=[(20,30),(40,50)]
-s[1]+=(20,30)
-print(s)
+
+
+
 
 
 
