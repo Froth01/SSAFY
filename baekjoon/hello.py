@@ -1,1 +1,0 @@
-print('hello.py 실행하기')
