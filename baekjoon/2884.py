@@ -1,4 +1,3 @@
-# 2884.알람시계
 H,M = map(int,input().split())
 if M > 45 :
     M-=45
