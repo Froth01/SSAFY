@@ -1,46 +1,88 @@
-import heapq
-
 N,M,k = map(int,input().split())
 frame = [list(map(int,input().split())) for _ in range(N)]
-smell = [[0]*N for _ in range(N)]
 shark_head = list(map(int,input().split()))
-move = [[list(map(int,input().split())) for _ in range(4)] for _ in range(M)]
-queue = []
-dti = [0,-1,1,0,0]
-dtj = [0,0,0,-1,1]
+shark = [[] for _ in range(M)]
+move = [[] for _ in range(M)]
+
+dti = [-1,1,0,0]
+dtj = [0,0,-1,1]
+
+for i in range(M):
+    for _ in range(4):
+        move[i].append(list(map(int,input().split())))
+
+
 for i in range(N):
     for j in range(N):
-        if frame[i][j]!=0:
-            smell[i][j]=[frame[i][j],k]
-            queue.append([frame[i][j],shark_head[frame[i][j]-1],i,j])
-time = 0
-move_lst = []
+        if frame[i][j] != 0:
+            shark[frame[i][j]-1] = [i,j,shark_head[frame[i][j]-1]-1]
+        frame[i][j]=[0,0]
 
-while queue:
-    q = queue.pop(0)
-    trigger = False
-    for d in range(4):
-        di = q[2]+dti[move[q[0]][q[1]][d]]
-        dj = q[3]+dtj[move[q[0]][q[1]][d]]
-        if di>N-1 or di<0 or dj>N-1 or dj<0 :
-            continue
-        elif frame[di][dj]==0:
-            trigger = True
-            move_lst.append([q[0],di,dj])
-            frame[q[2]][q[3]]=0
-            break
-    if not trigger:
-        for d in range(4):
-            di = q[2]+dti[move[q[0]][q[1]][d]]
-            dj = q[3]+dtj[move[q[0]][q[1]][d]]
-            if di>N-1 or di<0 or dj>N-1 or dj<0:
-                continue
-            elif smell[di][dj][0]==q[0]:
-                move_lst.append([q[0],di,dj])
-                frame[q[2]][q[3]] = 0
-                break
-while move_lst:
-    m = move_lst.pop(0)
-    if frame[[m[1]][m[2]]>m[0]:
+def smell(lst,shark):
+    for i in range(len(shark)):
+        if shark[i]:
+            x,y,d = shark[i]
+            lst[x][y]=[k,i]
+    return lst
 
-    frame[m[1]][m[2]]=m[0]
+def next(lst):
+    for i in range(N):
+        for j in range(N):
+            if lst[i][j][0]>0:
+                lst[i][j][0] -= 1
+    return lst
+
+def moving(shark):
+    way = [[[] for _ in range(N)] for r in range(N)]
+    for i in range(len(shark)):
+        if shark[i]:
+            x,y,m = shark[i]
+            route = []
+            my_route = []
+            for k in range(4):
+                nx,ny = x+dti[k], y+dtj[k]
+                if 0 <= nx < N and 0 <= ny < N:
+                    if frame[nx][ny][0] == 0:
+                        route.append((nx,ny,k))
+                    elif frame[nx][ny][1] == i:
+                        my_route.append((nx,ny,k))
+            new_way = m
+            if not route:
+                route = my_route
+            if len(route) >= 2:
+                shark_rank = move[i][m]
+                for r in shark_rank:
+                    trigger = False
+                    for a,b,c in route:
+                        if r-1 == c:
+                            new_way = r - 1
+                            trigger = True
+                            break
+                    if trigger:
+                        break
+            else:
+                new_way = route[0][2]
+            shark[i]=[x+dti[new_way], y+dtj[new_way], new_way]
+            way[x+dti[new_way]][y+dtj[new_way]].append(i)
+
+    for i in range(N):
+        for j in range(N):
+            if len(way[i][j])>1:
+                way[i][j].sort()
+                for k in way[i][j][1:]:
+                    shark[k]=[]
+    cnt = 0
+    for i in range(M):
+        if shark[i]:
+            cnt+=1
+    return shark,cnt
+
+for i in range(1000):
+    frame = smell(frame,shark)
+    shark, live = moving(shark)
+    frame = next(frame)
+    if live == 1 :
+        print(i+1)
+        break
+else:
+    print(-1)
