@@ -10,6 +10,7 @@ def zip(n,y,x):
             if frame[i][j] != frame[y][x]:
                 trigger = True
                 zip(n+1,y,x)
+                break
     if not trigger:
         print(f'{frame[y][x]}', end='')
     # 우상단
@@ -19,6 +20,7 @@ def zip(n,y,x):
             if frame[i][j] != frame[y][(N//2**n)+x]:
                 trigger = True
                 zip(n+1,y,(N//2**n)+x)
+                break
     if not trigger:
         print(f'{frame[y][(N//2**n)+x]}', end='')
     # 좌하단
@@ -28,6 +30,7 @@ def zip(n,y,x):
             if frame[i][j] != frame[(N//2**n)+y][x]:
                 trigger = True
                 zip(n+1,(N//2**n)+y,x)
+                break
     if not trigger:
         print(f'{frame[(N//2**n)+y][x]}', end='')
     # 우하단
@@ -37,13 +40,13 @@ def zip(n,y,x):
             if frame[i][j] != frame[(N//2**n)+y][(N//2**n)+x]:
                 trigger = True
                 zip(n+1,(N//2**n)+y,(N//2**n)+x)
+                break
     if not trigger:
         print(f'{frame[(N//2**n)+y][(N//2**n)+x]}', end='')
-
     print(')', end='')
 
 N = int(input())
-frame = [list(map(int,input().split())) for _ in range(N)]
-zip(1)
+frame = [list(input()) for _ in range(N)]
+zip(1,0,0)
 
 
