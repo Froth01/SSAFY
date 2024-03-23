@@ -1,35 +1,36 @@
 import sys
+from heapq import heappop,heappush
 input = sys.stdin.readline
 
-def lowest_cost(s,e):
-    queue = []
-    queue.append(s)
-    while queue:
-        t = queue.pop()
-        i
-        for i in adjl[t]:
-            if i in visited:
+def dijkstra(start):
+    pq = []
+    heappush(pq,(0,start))
+    distance[start] = 0
+    while pq:
+        dist, now = heappop(pq)
+        if distance[now] < dist:
+            continue
+        for to in graph[now]:
+            next_dist = to[0]
+            next_node = to[1]
+            new_dist = dist + next_dist
+            if new_dist >= distance[next_node]:
                 continue
-            elif low_cost[i]>frame[t][i]:
-                low_cost[i]=frame[t][i]
-                visited.add(i)
-            else:
-                visited.add(i)
+            distance[next_node] = new_dist
+            heappush(pq, (new_dist,next_node))
 
 N = int(input())
 M = int(input())
-frame = [[100000]*(N+1) for _ in range(N+1)]
-adjl = [[] for _ in range(N+1)]
-visited = set()
-low_cost = [100000]*(N+1)
+inf = int(1e9)
+graph = [[] for _ in range(N+1)]
 for m in range(M):
-    start,end,cost = map(int,input().split())
-    adjl[start].append(end)
-    if cost<frame[start][end]:
-        frame[start][end]=cost
-start,end = map(int,input().split())
-visited.add(start)
+    s,e,w = map(int,input().split())
+    graph[s].append([w,e])
+distance = [inf]*(N+1)
+start, end = map(int,input().split())
+dijkstra(start)
+print(distance[end])
 
-print(costs[0])
+
 
 
