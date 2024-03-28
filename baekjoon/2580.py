@@ -11,9 +11,7 @@ for i in range(9):
     for j in range(len(line)):
         if line[j]==0:
             zero.append([i,j])
-for j in range(9):
-    for i in range(9):
-        y_sudoku[j].append(sudoku[i][j])
+y_sudoku = list(map(list,zip(*sudoku)))
 for i in range(0,7,3):
     for j in range(0,7,3):
         cube = []
@@ -28,16 +26,7 @@ while zero:
     s = cube_sudoku[t[0]//3][t[1]//3]
     while True:
         n = m%10
-        if n == 0:
-            m+=1
-            continue
-        elif n in x:
-            m+=1
-            continue
-        elif n in y:
-            m+=1
-            continue
-        elif n in s:
+        if n == 0 or n in x or n in y or n in s:
             m+=1
             continue
         else:
