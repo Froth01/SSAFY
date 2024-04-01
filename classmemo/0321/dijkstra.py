@@ -12,6 +12,7 @@ distance = [INF] * V
 
 for _ in range(E):
     s, e, w = map(int,input().split())
+    if
     graph[s].append([w,e])
 
 def dijkstra(start):
