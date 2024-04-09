@@ -15,7 +15,7 @@ def find_k(y,x):
             used[key] += 1
         # 주어지는 문자열 길이까지만 저장
         if len(key) >= 5:
-            return
+            continue
         # 8방향 탐색, 환형은 나머지 계산으로 적용
         for d in range(8):
             di = (i + delta[d][0]) % N

@@ -15,7 +15,7 @@ def dfs(i,j,area):
             else :
                 visited[di][dj] = 1
                 dfs(di,dj,area+1)
-                visited[di][dj] = 0
+
 
 
 N = int(input())
@@ -23,13 +23,12 @@ frame = [list(map(int,input().split())) for _ in range(N)]
 possible = [[0]*N for _ in range(N)]
 visited = [[0]*N for _ in range(N)]
 delta = [(0,1),(1,0),(0,-1),(-1,0)]
-result = 0
+result = 1
 for i in range(N):
     for j in range(N):
         max_bamboo = 0
         visited[i][j] = 1
         dfs(i,j,1)
-        visited[i][j] = 0
         if not possible[i][j]:
             possible[i][j] = max_bamboo
         visited[i][j] = 0
