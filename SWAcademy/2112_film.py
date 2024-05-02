@@ -31,7 +31,6 @@ def testing(lst,limit,lvl):
             if answer:
                 return
 
-
 T = int(input())
 for t in range(T):
     D,W,K = map(int,input().split())
